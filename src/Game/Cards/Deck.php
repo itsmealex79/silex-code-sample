@@ -4,8 +4,18 @@ namespace Game\Cards;
 use Game\Rest\Request;
 
 class Deck {
-    public function getNewDeck($url) {
-      $request = new Request($url);
-      return $request->getResponseBody();
-    }
+
+  public $request;
+
+  public function __construct() {
+    $this->request = new Request();
+  }
+
+  public function getNewDeck($url) {
+    return $this->request->getResponseBody($url);
+  }
+
+  public function showCards($url) {
+    return $this->request->getResponseBody($url);
+  }
 }
