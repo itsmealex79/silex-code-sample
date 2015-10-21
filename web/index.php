@@ -11,7 +11,8 @@ $app['debug'] = true;
 
 // Create new card deck.
 $game = new Deck;
-$deck = $game->getNewDeck(Settings::$URL);
+$newDeck = $game->getNewDeck(Settings::$BASE_URL . Settings::$NEW_DECK);
+$deck = $game->showCards(Settings::$BASE_URL . '' . $newDeck['deck_id'] . '' . Settings::$SHOW_CARDS);
 
 // Routes
 $app->get('/', function() use ($deck) {
