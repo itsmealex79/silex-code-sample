@@ -12,10 +12,12 @@ class Deck {
   }
 
   public function getNewDeck($url) {
-    return $this->request->getResponseBody($url);
+    //return $this->request->getResponseBody($url);
+    return $url;
   }
 
   public function showCards($url) {
-    return $this->request->getResponseBody($url);
+    //return $this->request->getResponseBody($url);
+    return 'test';
   }
 }
