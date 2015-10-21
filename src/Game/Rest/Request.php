@@ -7,8 +7,6 @@
 namespace Game\Rest;
 
 class Request {
-
-  public $url;
   public $setError;
   public $responseBody;
   public $httpCode;
@@ -17,15 +15,14 @@ class Request {
    * Get the response body
    **/
   public function getResponseBody($url) {
-    $this->setUrl($url);
-    $this->executeRequest();
+    $this->executeRequest($url);
     return $this->responseBody;
   }
 
   /**
    * Execute curl request
    **/
-  protected function executeRequest() {
+  protected function executeRequest($url) {
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_HEADER, TRUE);
@@ -34,7 +31,7 @@ class Request {
     curl_setopt($ch, CURLOPT_TIMEOUT, 20);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 20);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-    curl_setopt($ch, CURLOPT_URL, $this->url);
+    curl_setopt($ch, CURLOPT_URL, $url);
 
     $response = curl_exec($ch);
 
@@ -49,17 +46,6 @@ class Request {
     $this->setResponseBody($responseBody);
 
     curl_close($ch);
-  }
-
-  /**
-   * Set the url for the request
-   **/
-  protected function setUrl($url) {
-    if (empty($url)) {
-      throw new Exception("Missing url from request.");
-    }
-
-    $this->url = $url;
   }
 
   /**
