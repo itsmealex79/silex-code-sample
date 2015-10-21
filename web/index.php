@@ -9,12 +9,12 @@ $app = new Silex\Application();
 $app['debug'] = true;
 
 
-// Create new card deck. 
+// Create new card deck.
 $game = new Deck;
 $deck = $game->getNewDeck(Settings::$URL);
 
 // Routes
-$app->get('/deck', function() use ($deck) {
+$app->get('/', function() use ($deck) {
     return $deck;
 });
 
