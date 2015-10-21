@@ -14,18 +14,11 @@ class Request {
   public $httpCode;
 
   /**
-   * Set the url for the Request object
-   * @param string $url
-  **/
-  public function __construct($url) {
-    $this->setUrl($url);
-    $this->executeRequest();
-  }
-
-  /**
    * Get the response body
    **/
-  public function getResponseBody() {
+  public function getResponseBody($url) {
+    $this->setUrl($url);
+    $this->executeRequest();
     return $this->responseBody;
   }
 
