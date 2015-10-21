@@ -15,7 +15,7 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
 
 // Create new card deck.
 $game = new Deck;
-$newDeck = $game->getNewDeck(Settings::$BASE_URL . Settings::$NEW_DECK);
+$newDeck = $game->getNewDeck(Settings::$BASE_URL . '' . Settings::$NEW_DECK);
 $deck = $game->showCards(Settings::$BASE_URL . '' . $newDeck['deck_id'] . '' . Settings::$SHOW_CARDS);
 
 // Routes
