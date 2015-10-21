@@ -19,7 +19,7 @@ $newDeck = $game->getNewDeck(Settings::$BASE_URL . '' . Settings::$NEW_DECK);
 $deck = json_decode($newDeck, true);
 $cards = $game->showCards(Settings::$BASE_URL . '' . $deck['deck_id'] . '' . Settings::$SHOW_CARDS);
 
-// Routes
+// Routes: returns json
 $app->get('/', function(Silex\Application $app) use ($cards) {
   $app['monolog']->addDebug('logging output.');
   return $cards;
